@@ -1,0 +1,14 @@
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\impl\JobInfoDAOImpl.java
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\dataobject\JobSnapshot.java
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\impl\JobSnapshotDAOImpl.java
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\JobSnapshotDAO.java
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\dataobject\enums\JobInfoInvokePolicyEnum.java
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\dataobject\enums\JobSnapshotStatusEnum.java
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\dataobject\JobInfo.java
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\dataobject\JobInfoHistory.java
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\dataobject\enums\JobInfoTypeEnum.java
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\query\JobInfoQuery.java
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\impl\JobInfoHistoryDAOImpl.java
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\JobInfoDAO.java
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\JobInfoHistoryDAO.java
+E:\idea_project_t\legends-master\legends-dao\src\main\java\com\tongbanjie\legends\server\dao\query\JobSnapshotQuery.java

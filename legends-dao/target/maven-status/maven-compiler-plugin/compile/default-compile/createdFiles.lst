@@ -1,0 +1,14 @@
+com\tongbanjie\legends\server\dao\query\JobSnapshotQuery.class
+com\tongbanjie\legends\server\dao\impl\JobSnapshotDAOImpl.class
+com\tongbanjie\legends\server\dao\impl\JobInfoHistoryDAOImpl.class
+com\tongbanjie\legends\server\dao\JobInfoDAO.class
+com\tongbanjie\legends\server\dao\dataobject\JobSnapshot.class
+com\tongbanjie\legends\server\dao\dataobject\enums\JobInfoTypeEnum.class
+com\tongbanjie\legends\server\dao\dataobject\enums\JobSnapshotStatusEnum.class
+com\tongbanjie\legends\server\dao\dataobject\JobInfo.class
+com\tongbanjie\legends\server\dao\dataobject\enums\JobInfoInvokePolicyEnum.class
+com\tongbanjie\legends\server\dao\JobInfoHistoryDAO.class
+com\tongbanjie\legends\server\dao\JobSnapshotDAO.class
+com\tongbanjie\legends\server\dao\query\JobInfoQuery.class
+com\tongbanjie\legends\server\dao\impl\JobInfoDAOImpl.class
+com\tongbanjie\legends\server\dao\dataobject\JobInfoHistory.class

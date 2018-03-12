@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="JobInfo">
+    <resultMap type="JobInfo" id="JobInfoResultMap">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="group" column="group"/>
+        <result property="type" column="type"
+                javaType="com.tongbanjie.legends.server.dao.dataobject.enums.JobInfoTypeEnum"/>
+        <result property="time" column="time"/>
+        <result property="cron" column="cron"/>
+        <result property="urls" column="urls"/>
+        <result property="classPath" column="class_path"/>
+        <result property="invokePolicy" column="invoke_policy"
+                javaType="com.tongbanjie.legends.server.dao.dataobject.enums.JobInfoInvokePolicyEnum"/>
+        <result property="isActivity" column="is_activity"/>
+        <result property="desc" column="desc"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="param" column="param"/>
+        <result property="latestTriggerTime" column="latest_trigger_time"/>
+        <result property="latestServerAddress" column="latest_server_address"/>
+        <result property="ownerPhone" column="owner_phone"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="JobInfo">
+        insert into job_info (`name`, `group`, `type`, `time`, `cron`, `urls`, `class_path`, `invoke_policy`,
+        `is_activity`, `desc`,
+        `create_time`, `modify_time`, `param`, `latest_trigger_time`, `latest_server_address`, `owner_phone`)
+        values
+        (
+        #{name}, #{group}, #{type}, #{time}, #{cron}, #{urls}, #{classPath}, #{invokePolicy}, #{isActivity}, #{desc},
+        #{createTime}, #{modifyTime}, #{param}, #{latestTriggerTime}, #{latestServerAddress}, #{ownerPhone}
+        )
+        <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <select id="getList" parameterType="JobInfo" resultMap="JobInfoResultMap">
+        select * from job_info
+        <where>
+            <if test="id != null">
+                `id` = #{id}
+            </if>
+            <if test="name != null">
+                and `name` = #{name}
+            </if>
+            <if test="group != null">
+                and `group` = #{group}
+            </if>
+            <if test="type != null">
+                and `type` = #{type}
+            </if>
+            <if test="time != null">
+                and `time` = #{time}
+            </if>
+            <if test="cron != null">
+                and `cron` = #{cron}
+            </if>
+            <if test="urls != null">
+                and `urls` = #{urls}
+            </if>
+            <if test="classPath != null">
+                and `class_path` = #{classPath}
+            </if>
+            <if test="invokePolicy != null">
+                and `invoke_policy` = #{invokePolicy}
+            </if>
+            <if test="isActivity != null">
+                and `is_activity` = #{isActivity}
+            </if>
+            <if test="desc != null">
+                and `desc` = #{desc}
+            </if>
+            <if test="param != null">
+                and `param` = #{param}
+            </if>
+            <if test="ownerPhone != null">
+                and `owner_phone` = #{ownerPhone}
+            </if>
+        </where>
+    </select>
+
+    <select id="getByNameAndGroup" parameterType="map" resultMap="JobInfoResultMap">
+		select * from job_info
+	  	where `name` = #{name} and `group` = #{group}
+	</select>
+
+    <select id="getListByNameAndGroup" parameterType="map" resultMap="JobInfoResultMap">
+        select * from job_info
+        <where>
+            <if test="name != null">
+                and `name` = #{name}
+            </if>
+            <if test="group != null">
+                and `group` = #{group}
+            </if>
+        </where>
+        order by id desc
+    </select>
+
+    <update id="updateById" parameterType="JobInfo">
+        update job_info
+        <set>
+            <if test="name != null">
+                `name` = #{name},
+            </if>
+            <if test="group != null">
+                `group` = #{group},
+            </if>
+            <if test="type != null">
+                `type` = #{type},
+            </if>
+            <if test="time != null">
+                `time` = #{time},
+            </if>
+            <if test="cron != null">
+                `cron` = #{cron},
+            </if>
+            <if test="urls != null">
+                `urls` = #{urls},
+            </if>
+            <if test="classPath != null">
+                `class_path` = #{classPath},
+            </if>
+            <if test="invokePolicy != null">
+                `invoke_policy` = #{invokePolicy},
+            </if>
+            <if test="isActivity != null">
+                `is_activity` = #{isActivity},
+            </if>
+            <if test="desc != null">
+                `desc` = #{desc},
+            </if>
+            <if test="modifyTime != null">
+                `modify_time` = #{modifyTime},
+            </if>
+            <if test="param != null">
+                `param` = #{param},
+            </if>
+            <if test="latestTriggerTime != null">
+                `latest_trigger_time` = #{latestTriggerTime},
+            </if>
+            <if test="latestServerAddress != null">
+                `latest_server_address` = #{latestServerAddress},
+            </if>
+            <if test="ownerPhone != null">
+                `owner_phone` = #{ownerPhone},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+		delete from job_info where id = #{id}
+	</delete>
+
+    <select id="findById" resultMap="JobInfoResultMap">
+		select * from job_info where id = #{id}
+	</select>
+
+    <select id="findByIdForUpdate" resultMap="JobInfoResultMap">
+		select * from job_info where id = #{id} for update
+	</select>
+
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>legends</artifactId>
+        <groupId>com.tongbanjie.legends</groupId>
+        <version>1.0-os</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>war</packaging>
+
+    <artifactId>legends-monitor</artifactId>
+
+    <build>
+        <finalName>legends-monitor</finalName>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.tongbanjie.legends</groupId>
+            <artifactId>legends-client</artifactId>
+            <version>1.0-os</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tongbanjie.legends</groupId>
+            <artifactId>legends-dao</artifactId>
+            <version>1.0-os</version>
+        </dependency>
+    </dependencies>
+
+</project>
