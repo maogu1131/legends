@@ -88,11 +88,11 @@ public class JobExecutorServlet extends HttpServlet {
 	private void handleJob(HttpServletRequest request,
 	                       HttpServletResponse response) throws IOException {
 
-		if (!AccessUtils.isAllow(request)) {
+		/**if (!AccessUtils.isAllow(request)) {
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 			System.err.println("来访者IP【" + AccessUtils.extractIp(request) + "】，不在允许请求范围内，所以拒绝服务，可以修改 Servlet allow 配置解决。");
 			return;
-		}
+		}**/
 
 		JobRequest jobRequest = getJobRequestFromHttpRequest(request);
 
