@@ -20,21 +20,23 @@
 		<result property="latestTriggerTime" column="latest_trigger_time"/>
 		<result property="latestServerAddress" column="latest_server_address"/>
 		<result property="ownerPhone" column="owner_phone" />
+		<result property="isCheckFinish" column="is_check_finish" />
+		<result property="checkFinishTime" column="check_finish_time" />
 	</resultMap>
-	
+
 	<insert id="insert" parameterType="JobInfoHistory">
 		insert into job_info_history (job_info_id, `name`, `group`, `type`, `time`, `cron`, `urls`, `class_path`, `invoke_policy`, `is_activity`, `desc`,
-		create_time, modify_time, `param`, `latest_trigger_time`, `latest_server_address`, `owner_phone`)
+		create_time, modify_time, `param`, `latest_trigger_time`, `latest_server_address`, `owner_phone`, `is_check_finish`, `check_finish_time`)
 		values
 		(
 		#{jobInfoId}, #{name}, #{group}, #{type}, #{time}, #{cron}, #{urls}, #{classPath}, #{invokePolicy}, #{isActivity}, #{desc},
-		#{createTime}, #{modifyTime}, #{param}, #{latestTriggerTime}, #{latestServerAddress}, #{ownerPhone}
+		#{createTime}, #{modifyTime}, #{param}, #{latestTriggerTime}, #{latestServerAddress}, #{ownerPhone}, #{isCheckFinish}, #{checkFinishTime}
 		)
 		<selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
 			SELECT LAST_INSERT_ID() AS ID
 		</selectKey>
 	</insert>
-	
+
 	<select id="getListByNameAndGroup" parameterType="map" resultMap="JobInfoHistoryResultMap">
 		select * from job_info_history
 		<where>
@@ -47,9 +49,9 @@
 		</where>
 		order by id desc
 	</select>
-    
-    <select id="findJobInfoHistoryById" resultMap="JobInfoHistoryResultMap">
+
+	<select id="findJobInfoHistoryById" resultMap="JobInfoHistoryResultMap">
 		select * from job_info_history where id = #{id}
 	</select>
-    
+
 </mapper>

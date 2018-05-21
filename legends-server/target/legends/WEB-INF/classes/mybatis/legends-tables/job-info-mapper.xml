@@ -21,16 +21,18 @@
         <result property="latestTriggerTime" column="latest_trigger_time"/>
         <result property="latestServerAddress" column="latest_server_address"/>
         <result property="ownerPhone" column="owner_phone"/>
+        <result property="isCheckFinish" column="is_check_finish" />
+        <result property="checkFinishTime" column="check_finish_time" />
     </resultMap>
 
     <insert id="insert" parameterType="JobInfo">
         insert into job_info (`name`, `group`, `type`, `time`, `cron`, `urls`, `class_path`, `invoke_policy`,
-        `is_activity`, `desc`,
-        `create_time`, `modify_time`, `param`, `latest_trigger_time`, `latest_server_address`, `owner_phone`)
+        `is_activity`, `desc`,`create_time`, `modify_time`, `param`, `latest_trigger_time`, `latest_server_address`,
+        `owner_phone`, `is_check_finish`, `check_finish_time`)
         values
         (
         #{name}, #{group}, #{type}, #{time}, #{cron}, #{urls}, #{classPath}, #{invokePolicy}, #{isActivity}, #{desc},
-        #{createTime}, #{modifyTime}, #{param}, #{latestTriggerTime}, #{latestServerAddress}, #{ownerPhone}
+        #{createTime}, #{modifyTime}, #{param}, #{latestTriggerTime}, #{latestServerAddress}, #{ownerPhone}, #{isCheckFinish}, #{checkFinishTime}
         )
         <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
             SELECT LAST_INSERT_ID() AS ID
@@ -82,10 +84,62 @@
         </where>
     </select>
 
+    <select id="countByParam" parameterType="com.tongbanjie.legends.server.dao.query.JobInfoQuery" resultType="int">
+        select count(1) from job_info
+        <trim prefix="where" prefixOverrides="AND">
+            <if test="name != null" >
+                AND `name` = #{name}
+            </if>
+            <if test="group != null" >
+                AND `group` = #{group}
+            </if>
+            <if test="likeName != null" >
+                AND `name` like CONCAT('%',#{likeName},'%')
+            </if>
+            <if test="likeGroup != null" >
+                AND `group` like CONCAT('%',#{likeGroup},'%')
+            </if>
+            <if test="isActivity != null">
+                AND `is_activity` = #{isActivity}
+            </if>
+            <if test="isCheckFinish != null">
+                AND `is_check_finish` = #{isCheckFinish}
+            </if>
+        </trim>
+    </select>
+
+    <select id="findByParam" parameterType="com.tongbanjie.legends.server.dao.query.JobInfoQuery" resultMap="JobInfoResultMap">
+        select * from job_info
+        <trim prefix="where" prefixOverrides="AND">
+            <if test="name != null" >
+                AND `name` = #{name}
+            </if>
+            <if test="group != null" >
+                AND `group` = #{group}
+            </if>
+            <if test="likeName != null" >
+                AND `name` like CONCAT('%',#{likeName},'%')
+            </if>
+            <if test="likeGroup != null" >
+                AND `group` like CONCAT('%',#{likeGroup},'%')
+            </if>
+            <if test="isActivity != null">
+                AND `is_activity` = #{isActivity}
+            </if>
+            <if test="isCheckFinish != null">
+                AND `is_check_finish` = #{isCheckFinish}
+            </if>
+        </trim>
+        ORDER BY id DESC
+        <if test="offset != null and rows != null" >
+            LIMIT #{offset}, #{rows}
+        </if>
+    </select>
+
     <select id="getByNameAndGroup" parameterType="map" resultMap="JobInfoResultMap">
-		select * from job_info
-	  	where `name` = #{name} and `group` = #{group}
-	</select>
+        select * from job_info
+        where `name` = #{name} and `group` = #{group}
+    </select>
 
     <select id="getListByNameAndGroup" parameterType="map" resultMap="JobInfoResultMap">
         select * from job_info
@@ -153,15 +207,15 @@
     </update>
 
     <delete id="deleteById">
-		delete from job_info where id = #{id}
-	</delete>
+        delete from job_info where id = #{id}
+    </delete>
 
     <select id="findById" resultMap="JobInfoResultMap">
-		select * from job_info where id = #{id}
-	</select>
+        select * from job_info where id = #{id}
+    </select>
 
     <select id="findByIdForUpdate" resultMap="JobInfoResultMap">
-		select * from job_info where id = #{id} for update
-	</select>
+        select * from job_info where id = #{id} for update
+    </select>
 
 </mapper>
