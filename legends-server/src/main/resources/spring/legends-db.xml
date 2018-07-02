@@ -15,8 +15,11 @@
         <property name="username">
             <value>${jdbc.druid.user}</value>
         </property>
+
         <property name="password">
-            <value>${jdbc.druid.password}</value>
+            <bean class="com.tongbanjie.legends.server.utils.EncryptDBPasswordFactory">
+                <property name="password" value="${jdbc.druid.password}" />
+            </bean>
         </property>
         <property name="filters">
             <value>${jdbc.druid.filters}</value>

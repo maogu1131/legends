@@ -28,7 +28,6 @@ public class JobInfoDAOImpl extends SqlSessionDaoSupport implements JobInfoDAO {
 
 		Assert.hasText(name);
 		Assert.hasText(group);
-
 		List<JobInfo> jobInfoList = findByParam(new JobInfoQuery(name, group));
 		return CollectionUtils.isEmpty(jobInfoList) ? null : jobInfoList.get(0);
 	}
